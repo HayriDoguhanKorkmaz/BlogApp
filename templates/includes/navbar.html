@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="{% url 'index' %}">B-Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="pull-right nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'about' %}">Hakkımda<span class="sr-only"></span></a>
+        </li>
+            
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'article:articles' %}">Makaleler<span class="sr-only"></span></a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if request.user.is_authenticated %}
+            
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'article:dashboard' %}">Kontrol Paneli<span class="sr-only"></span></a>
+          </li>
+            
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:logout' %}">Çıkış Yap<span class="sr-only"></span></a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:login' %}">Giriş Yap<span class="sr-only"></span></a>
+          </li>
+
+        {% endif %}
+          
+            
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user:register' %}">Kayıt Ol<span class="sr-only"></span></a>
+        </li>
+      </ul>
+    </div>
+</nav>
